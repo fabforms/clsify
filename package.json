@@ -1,0 +1,30 @@
+{
+  "name": "clsify",
+  "version": "1.0.0",
+  "description": "A minimal and powerful utility for managing CSS class names dynamically.",
+  "main": "clsify.js",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 0",
+    "build": "echo \"Build steps here\""
+  },
+  "keywords": [
+    "css",
+    "classnames",
+    "clsx",
+    "utility",
+    "class-builder"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/clsify.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/clsify/issues"
+  },
+  "homepage": "https://github.com/yourusername/clsify#readme"
+	}
+
