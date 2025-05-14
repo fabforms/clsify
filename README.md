@@ -1,8 +1,9 @@
 # clsify
 
-`clsify` is a powerful and flexible utility that allows you to easily construct, combine, and manage dynamic CSS class names
- in JavaScript. Whether you're building responsive layouts, conditionally applying classes, or handling complex UI states, 
-`clsify` provides a simple, clean, and effective way to manage your CSS class names.
+`clsify` is a powerful and flexible utility that allows you to easily construct, combine, 
+and manage dynamic CSS class names in JavaScript. Whether you're building responsive 
+layouts, conditionally applying classes, or handling complex UI states, `clsify` provides 
+a simple, clean, and effective way to manage your CSS class names.
 
 ## Features
 
@@ -25,14 +26,24 @@ yarn add clsify
 
 ## Usage
 
+### Importing `clsify`
+
+To use `clsify` in your JavaScript code, import it as follows:
+
+```javascript
+import clsify from 'clsify';
+```
+
 ### Basic Usage
 
-The core functionality of `clsify` is to conditionally join class names. You can pass strings, arrays, and objects, 
-and it will intelligently build the correct class names for you.
+`clsify` lets you conditionally join class names from strings, arrays, or objects,
+building a dynamic class name string. Here's how you can use it:
 
-```js
+```javascript
 import clsify from 'clsify';
 
+// Using strings and objects
+const isLarge = true;
 const buttonClass = clsify('btn', 'btn-primary', { 'btn-large': isLarge });
 
 console.log(buttonClass); // 'btn btn-primary btn-large' (if isLarge is true)
@@ -40,9 +51,12 @@ console.log(buttonClass); // 'btn btn-primary btn-large' (if isLarge is true)
 
 ### Conditional Class Names
 
-You can use `clsify` with conditional values, which is perfect for conditionally applying classes based on state or props.
+You can pass conditional values that are either true or false.
+This is useful for adding classes based on conditions:
 
-```js
+```javascript
+import clsify from 'clsify';
+
 const isActive = true;
 const buttonClass = clsify('btn', isActive && 'btn-active', 'btn-large');
 
@@ -51,22 +65,27 @@ console.log(buttonClass); // 'btn btn-active btn-large' (if isActive is true)
 
 ### Handling Arrays
 
-`clsify` supports arrays, allowing you to pass multiple values at once and let it handle the logic for you.
+You can also pass arrays of class names for a simpler approach:
 
-```js
+```javascript
+import clsify from 'clsify';
+
 const buttonClass = clsify(['btn', 'btn-primary', 'btn-large']);
 console.log(buttonClass); // 'btn btn-primary btn-large'
 ```
 
 ### Handling Objects
 
-You can also pass objects where the keys represent the class names and the values are booleans, indicating whether the class should be included.
+If you want to specify which classes should be included based on a boolean value,
+you can pass an object:
 
-```js
+```javascript
+import clsify from 'clsify';
+
 const buttonClass = clsify({
   'btn': true,
   'btn-primary': true,
-  'btn-large': false // This will be omitted
+  'btn-large': false // This class will be omitted
 });
 
 console.log(buttonClass); // 'btn btn-primary'
@@ -74,9 +93,12 @@ console.log(buttonClass); // 'btn btn-primary'
 
 ### With Modifiers
 
-`clsify` includes a helper for adding modifiers to your class names. This is useful for utility-based CSS frameworks where you may need to dynamically add modifiers.
+`clsify` allows you to add modifiers to your class names. This can be useful
+for utility-first CSS frameworks like BEM or Tailwind:
 
-```js
+```javascript
+import clsify from 'clsify';
+
 const modifiedClass = clsify.withModifier('btn', ['active', 'large']);
 
 console.log(modifiedClass); // 'btn btn--active btn--large'
@@ -84,9 +106,11 @@ console.log(modifiedClass); // 'btn btn--active btn--large'
 
 ### With Prefixes
 
-You can add a prefix to your class names, which is useful when working with BEM-style naming or any custom naming conventions.
+You can add a prefix to each of your class names using `withPrefix`:
 
-```js
+```javascript
+import clsify from 'clsify';
+
 const prefixedClass = clsify.withPrefix('my-prefix', 'btn', 'active');
 
 console.log(prefixedClass); // 'my-prefix-btn my-prefix-active'
@@ -94,9 +118,12 @@ console.log(prefixedClass); // 'my-prefix-btn my-prefix-active'
 
 ### Responsive Classes
 
-If you're working with responsive designs, `clsify` allows you to easily manage classes for different screen sizes.
+`clsify` makes it easy to manage classes for different screen sizes,
+perfect for responsive design:
 
-```js
+```javascript
+import clsify from 'clsify';
+
 const responsiveClass = clsify.responsive('lg', 'btn', 'active', 'large');
 
 console.log(responsiveClass); // 'btn active large lg-btn lg-active lg-large'
@@ -104,9 +131,12 @@ console.log(responsiveClass); // 'btn active large lg-btn lg-active lg-large'
 
 ### Chainable API
 
-You can also chain multiple operations for progressive class-building.
+For more complex class-building scenarios, `clsify` offers a chainable API
+to combine operations:
 
-```js
+```javascript
+import clsify from 'clsify';
+
 const classBuilder = clsify.chain('btn');
 const finalClass = classBuilder
   .add('primary')
@@ -120,6 +150,8 @@ console.log(finalClass); // 'btn primary my-prefix-btn my-prefix-active sm-btn s
 ```
 
 ### Helper Functions
+
+Here are some of the helper functions available with `clsify`:
 
 * **`clsify.withModifier(baseClass, modifiers)`**: Add modifiers to a base class.
 * **`clsify.withPrefix(prefix, ...classes)`**: Add a prefix to multiple class names.
@@ -137,7 +169,7 @@ console.log(finalClass); // 'btn primary my-prefix-btn my-prefix-active sm-btn s
 
 Here’s an example of how `clsify` can be used in a real-world project:
 
-```js
+```javascript
 import clsify from 'clsify';
 
 const isActive = true;
@@ -156,9 +188,10 @@ console.log(buttonClass); // 'btn btn-active btn-large'
 
 ## Sponsorship
 
-###  Sponsored by [FabForm.io](https://fabform.io) 
+### Sponsored by [FabForm.io](https://fabform.io)
 
-`clsify` is proudly sponsored by **[FabForm.io](https://fabform.io)**, a powerful platform for building modern forms with ease and flexibility. If you find `clsify` useful, check out **FabForm.io** for a seamless and intuitive form-building experience.
+`clsify` is proudly sponsored by **[FabForm.io](https://fabform.io)**, a powerful platform for building modern forms
+with ease and flexibility. If you find `clsify` useful, check out **FabForm.io** for a seamless and intuitive form-building experience.
 
 🚀 [Try FabForm.io now!](https://fabform.io)
 
@@ -166,7 +199,8 @@ console.log(buttonClass); // 'btn btn-active btn-large'
 
 ## Contributing
 
-We welcome contributions to `clsify`! If you'd like to improve the utility or fix any bugs, feel free to open an issue or submit a pull request.
+We welcome contributions to `clsify`! If you'd like to improve the utility or fix any bugs,
+feel free to open an issue or submit a pull request.
 
 ---
 
